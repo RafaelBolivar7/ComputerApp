@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Computadores</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="computerApp.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-light" aria-label="breadcrumb">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Alquiler de Computadores</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="compindex.html">Computadores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="clientes.html">Clientes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Otros Forms
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="categoria.html">Categoría</a></li>
+                            <li><a class="dropdown-item" href="messages.html">Mensajes</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Reservas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <div class="container w-30 bg-white mt-3 roundedshadow">
+        <h1 class="text-primary">Formulario Computadores</h1>
+        
+        <section class="text-bg-light p-1">
+            <form action="">
+            <fieldset>
+                <legend>Información del Computador</legend>
+                <div class="row">
+                    <div class="col">
+                        ID Computador: <input type="number" id="idComputador" placeholder="ID del equipo" class="form-control"><br>
+                        Marca Computador: <input type="text" id="marca" placeholder="Marca del equipo"class="form-control"><br>
+                        Modelo Computador: <input type="number" id="modelo" placeholder="Modelo del equipo" class="form-control"><br>
+                    </div>
+                    <div class="col">
+                        Categoria ID: <input type="number" id="categoria" placeholder="Categoría del equipo" class="form-control"><br>
+                        Nombre: <input type="text" id="nombreComputador" placeholder="Nombre del equipo" class="form-control" ><br>
+                    </div>    
+                </div>
+            </fieldset>
+            </form>
+        </section>
+        <section class="text-bg-light p-1 text-center">
+                <button class = "btn btn-secondary" onclick="getComputer()">TRAER COMPUTADOR</button>
+                <button class="btn btn-secondary" onclick="saveComputer()">GUARDAR COMPUTADOR</button>
+	            <button class= "btn btn-secondary" onclick="updateComputer()">ACTUALIZAR COMPUTADOR</button>      
+        </section>
+        <section class="text-bg-light p-3">
+            <table id="tabla" class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td id="nombre">Nombre</td>
+                        <td>Marca</td>
+                        <td>Modelo</td>
+                        <td>Categoria</td>
+                        <td>Editar</td>
+                        <td>Eliminar</td>
+                    </tr> 
+                </thead>
+                <tbody id="datos">                   
+                </tbody>
+            </table>
+        </section>  
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+</html>
