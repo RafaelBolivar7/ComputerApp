@@ -47,10 +47,8 @@ public class Category {
         return computers;
     }
 
-    public void setMachines(List<Computer> computers) {
+    public void setComputers(List<Computer> computers) {
         this.computers = computers;
     }
-
-
 
 }

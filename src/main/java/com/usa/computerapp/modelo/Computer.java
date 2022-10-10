@@ -20,7 +20,7 @@ public class Computer {
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("computer")
+    @JsonIgnoreProperties("computers")
     private Category category;
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "computer")
     @JsonIgnoreProperties({"computer","client"})

@@ -16,12 +16,12 @@ public class ComputerControlador{
     @Autowired
     private ComputerService computerService;
     @GetMapping("/all")
-    public List<Computer> getMachines(){
+    public List<Computer> getComputers(){
         return computerService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Computer> getMachine(@PathVariable("id") int computerId) {
+    public Optional<Computer> getComputer(@PathVariable("id") int computerId) {
         return computerService.getComputer(computerId);
     }
 
@@ -40,7 +40,7 @@ public class ComputerControlador{
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id){
-        return computerService.deleteMachine(id);
+        return computerService.deleteComputer(id);
     }
 
 }

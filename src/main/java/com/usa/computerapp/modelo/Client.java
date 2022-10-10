@@ -1,7 +1,6 @@
 package com.usa.computerapp.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.apache.catalina.LifecycleState;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,6 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "client")
 public class Client {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;

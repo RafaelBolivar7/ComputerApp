@@ -23,7 +23,7 @@ public class ReservationControlador {
     public Optional<Reservation> getReservation(@PathVariable("id") int reservationId) {
         return reservationService.getReservation(reservationId);
     }
-    @GetMapping("/save")
+    @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation reservation) {
         return reservationService.save(reservation);

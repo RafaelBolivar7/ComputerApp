@@ -28,6 +28,4 @@ public class ComputerRepository {
     public void delete(Computer computer){
         computerCrudRepository.delete(computer);
     }
-
-
 }

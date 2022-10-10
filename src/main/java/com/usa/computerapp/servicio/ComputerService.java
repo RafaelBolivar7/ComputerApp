@@ -65,7 +65,7 @@ public class ComputerService {
 
 
 
-    public boolean deleteMachine (int id){
+    public boolean deleteComputer(int id){
         Boolean d = getComputer(id).map(computer -> {
             computerRepository.delete(computer);
             return true;

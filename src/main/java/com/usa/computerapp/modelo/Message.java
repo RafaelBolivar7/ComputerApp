@@ -12,7 +12,6 @@ public class Message {
     private Integer idMessage;
     private String messageText;
 
-
     @ManyToOne
     @JoinColumn(name="id")
     @JsonIgnoreProperties({"messages","reservations"})
@@ -54,4 +53,5 @@ public class Message {
     public void setClient(Client client) {
         this.client = client;
     }
+
 }
