@@ -1,10 +1,17 @@
 package com.usa.computerapp.servicio;
 
 import com.usa.computerapp.modelo.Reservation;
+import com.usa.computerapp.modelo.dtos.CountClient;
+import com.usa.computerapp.modelo.dtos.CountStatus;
 import com.usa.computerapp.repositorio.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,4 +73,36 @@ public class ReservationService {
         }).orElse(false);
         return d;
     }
+
+    // Reto 5
+
+    public List<CountClient> getClientesTop(){
+        return reservationRepository.getClientesTop();
+    }
+
+    public List<Reservation> getReservationsBetweenDays(String dateA, String dateB){
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+        Date a = new Date();
+        Date b = new Date();
+
+        try{
+            a = parser.parse(dateA);
+            b = parser.parse(dateB);
+        }catch(ParseException error){
+            error.printStackTrace();
+        }
+        if (a.before(b)){
+            return reservationRepository.getReservationBetweenDays(a,b);
+        }else{
+            return new ArrayList<>();
+        }
+    }
+
+    public CountStatus getReservationsStatus(){
+        List<Reservation> reservasCompletadas =reservationRepository.getReservationByStatus("completed");
+        List<Reservation> reservasCanceladas = reservationRepository.getReservationByStatus("cancelled");
+
+        return new CountStatus((long) reservasCompletadas.size(), (long) reservasCanceladas.size());
+    }
+
 }
