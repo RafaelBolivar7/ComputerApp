@@ -1,9 +1,7 @@
 package com.usa.computerapp.controlador;
 
 import com.usa.computerapp.modelo.Admin;
-import com.usa.computerapp.modelo.Score;
 import com.usa.computerapp.servicio.AdminService;
-import com.usa.computerapp.servicio.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Admin")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class AdminControlador {
     @Autowired
     private AdminService adminService;
