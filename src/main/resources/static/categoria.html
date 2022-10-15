@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rafael Bolivar"/>
     <title>Formulario Computadores</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
@@ -12,16 +13,16 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-light" aria-label="breadcrumb">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="breadcrumb">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Alquiler de Computadores</a>
+            <a class="navbar-brand" href="#">ComputerApp</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="compindex.html">Computadores</a>
@@ -30,14 +31,15 @@
                         <a class="nav-link" href="clientes.html">Clientes</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Otros Forms
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="categoria.html">Categoría</a></li>
+                            <li><a class="dropdown-item" href="categoria.html" >Categoría</a></li>
                             <li><a class="dropdown-item" href="messages.html">Mensajes</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Reservas</a></li>
+                            <li><a class="dropdown-item" href="admin.html">Administradores</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -51,11 +53,12 @@
           </div>
         </div>
       </nav>
-    <div class="container w-30 bg-white mt-3 roundedshadow">
-        <h1 class="text-primary">Formulario Categorias</h1>
+    <div class="container w-30 bg-light mt-3 roundedshadow">
+        <h1 class="text-primary">Gestión de Categorias</h1>
+        <p>En esta sección puede gestionar los administradores por medio de agregación, edición o eliminación de elementos</p>
         
         <section class="text-bg-light p-1">
-            <form action="">
+            <!--<form action="">
             <fieldset>
                 <legend>Información de la Categoria</legend>
                 <div class="row">
@@ -67,14 +70,14 @@
                         Descripcion Categoria: <input type="text" id="descripcionCategoria" placeholder="Descripcion de la categoria" class="form-control"><br>                        
                 </div>
             </fieldset>
-            </form>
+            </form>-->
         </section>
         <section class="text-bg-light p-1 text-center">
-                <button class = "btn btn-secondary" onclick="getCategory()">TRAER CATEGORIA</button>
-                <button class="btn btn-secondary" onclick="saveCategory()">GUARDAR CATEGORIA</button>
-	            <button class= "btn btn-secondary" onclick="updateCategory()">ACTUALIZAR CATEGORIA</button>      
+                <!--<button class = "btn btn-outline-dark" onclick="getCategory()">TRAER CATEGORIA</button>-->
+                <button class="btn btn-outline-success" data-bs-toggle='modal' data-bs-target='#modalAgregar'>GUARDAR CATEGORIA</button>
+	            <!--<button class= "btn btn-outline-dark" onclick="updateCategory()">ACTUALIZAR CATEGORIA</button>-->      
         </section>
-        <section class="text-bg-light p-3">
+        <section class="text-bg-light p-3 mb-5">
             <table id="tabla" class="table table-dark table-striped">
                 <thead>
                     <tr>
@@ -90,7 +93,66 @@
             </table>
         </section>  
     </div>
+
+ <!-- Modal Agregar -->
+ <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalAgregarLabel">Agregar Categoría</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    Nombre de la Categoría <input type="text" class="form-control" id="nombreCategoria" placeholder="Nombre de la Categoria">
+                </div>
+                <div class="mb-3">
+                    Descripcion <input type="text" class="form-control" id="descripcion" placeholder="Descripción">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="saveCategory();">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Modal Editar -->
+  <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditarLabel">Editar Categoria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <input type="hidden" id="idEd">
+                <div class="mb-3">
+                    Nombre de la Categoria: <input type="text" class="form-control" id="nombreEd" placeholder="Nombre">
+                </div>
+                <div class="mb-3">
+                    Descripcion: <input type="text" class="form-control" id="descripcionEd" placeholder="Contraseña">
+                </div>
+            </form>
+        </div> 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="updateCategory();">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <section>
+        <footer class="mt-5 text-secondary-50"style="text-align:center">
+            <p>MisionTic 2022 <a class="text-primary">ComputerApp</a>, by <a href="#" class="text-success">Grupo 5</a>.</p>
+          </footer>
+        </section>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+
 </html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Grupo 5"/>
+    <title>Gestión de Administradores</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="breadcrumb">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ComputerApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="compindex.html">Computadores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="clientes.html">Clientes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Más Accesos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="categoria.html" >Categoría</a></li>
+                            <li><a class="dropdown-item" href="messages.html">Mensajes</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="reserva.html">Reservas</a></li>
+                            <li><a class="dropdown-item" href="admin.html">Administradores</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <div class="container w-30 bg-light mt-3 roundedshadow">
+        <h1 class="text-primary">Gestión de Administradores</h1>
+        <p>En esta sección puede gestionar los administradores por medio de agregación, edición o eliminación de elementos</p>
+        
+        <section class="text-bg-light p-1">
+            <!--<form action="">
+            <fieldset>
+                <legend>Información de Administrador</legend>
+                <div class="row">
+                    <div class="col">
+                        Id Administrador: <input type="number" id="idAdmin" placeholder="ID del Administrador" class="form-control"><br>
+                        Nombre Administrador: <input type="text" id="nameAdmin" placeholder="Nombre del administrador"class="form-control"><br>
+                    </div>
+                    <div class="col">
+                        Contraseña: <input type="text" id="passAdmin" placeholder="Contraseña Administrador" class="form-control"><br>
+                        Email: <input type="text" id="mailAdmin" placeholder="Email Administrador" class="form-control"><br>                        
+                </div>
+            </fieldset>
+            </form>-->
+        </section>
+        <section class="text-bg-light p-1 text-center">
+                <!--<button class = "btn btn-outline-dark" onclick="getAdmin()">TRAER ADMINISTRADOR</button>-->
+                <button class="btn btn-outline-success"  data-bs-toggle='modal' data-bs-target='#modalAgregar'>GUARDAR ADMINISTRADOR</button>
+	            <!--<button class= "btn btn-outline-dark" onclick="updateAdmin()">ACTUALIZAR ADMINISTRADOR</button>-->      
+        </section>
+        <section class="text-bg-light p-3 mb-5">
+            <table id="tabla" class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Nombre</td>
+                        <td>Contraseña</td>
+                        <td>Email</td>
+                        <td>Editar</td>
+                        <td>Eliminar</td>
+                    </tr> 
+                </thead>
+                <tbody id="datos">                   
+                </tbody>
+            </table>
+        </section>  
+    </div>
+    <!-- Modal Agregar -->
+    <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAgregarLabel">Agregar Administrador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            Nombre del Administrador <input type="text" class="form-control" id="nombreAdmin"
+                                placeholder="Nombre del administrador">
+                        </div>
+                        <div class="mb-3">
+                            Contraseña <input type="text" class="form-control" id="pass" placeholder="Contraseña">
+                        </div>
+                        <div class="mb-3">
+                            Email <input type="email" class="form-control" id="email" placeholder="Email del Adminsitrador">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveAdmin();">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Editar -->
+  <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditarLabel">Editar Administrador</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <input type="hidden" id="idEd">
+                <div class="mb-3">
+                    Nombre del Administrador: <input type="text" class="form-control" id="nombreEd" placeholder="Nombre">
+                </div>
+                <div class="mb-3">
+                    Contraseña: <input type="text" class="form-control" id="passEd" placeholder="Contraseña">
+                </div>
+                <div class="mb-3">
+                    Email: <input type="email" class="form-control" id="emailEd" placeholder="Emailr">
+                </div>
+                <div class="mb-3">
+            </form>
+        </div> 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="updateAdmin();">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <section>
+        <footer class="mt-5 text-secondary-50"style="text-align:center">
+            <p>MisionTic 2022 <a class="text-primary">ComputerApp</a>, by <a href="#" class="text-success">Grupo 5</a>.</p>
+          </footer>
+        </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+
+</html>
